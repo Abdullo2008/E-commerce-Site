@@ -1,0 +1,6 @@
+Pipfile
+Pipfile.lock
+.env
+db.sqlite3
+myapp/migrations/0001_initial.py
+myapp/migrations/0002_productmodel_price.py
