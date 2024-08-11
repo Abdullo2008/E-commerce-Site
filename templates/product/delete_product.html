@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<br><br>
+<center>
+<form method="post">{% csrf_token %}
+    <h2>Подтвердите удаление продукта!!!</h2>
+    <button type="submit" class="btn btn-outline-danger">Подтвердить</button>
+</form>
+</center>
+
+{% endblock %}

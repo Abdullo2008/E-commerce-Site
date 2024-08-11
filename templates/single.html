@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Все товары в текущей категории</h2>
+    {% for product in products %}
+    <div class="row">
+        <!-- Product Image on the left -->
+        <div class="col-md-4 mb-3">
+            <div class="card text-white bg-dark">
+                <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+            </div>
+        </div>
+        <!-- Product Details and Form on the right -->
+        <div class="col-md-8 mb-3">
+            <div class="card text-white bg-dark">
+                <div class="card-body">
+                    <h3>Имя: {{ product.name }}</h3>
+                    <p>Описание: {{ product.description }}</p>
+                    <p>Количество: {{ product.quantity }}</p>
+                    <p>Категория: {{ product.category }}</p>
+                    <p>Цена: {{ product.price }}$</p>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <a href="{% url 'add' product.id %}">
+                            <button type="button" class="btn btn-outline-success">ДОБАВИТЬ</button>
+                        </a>
+                        <a href="{% url 'sell' product.id %}">
+                            <button type="button" class="btn btn-outline-danger">ПРОДАТЬ</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

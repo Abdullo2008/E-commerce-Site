@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<br><br>
+<style>
+    .container {
+        padding: 20px;
+        margin: 0 auto;
+        max-width: 800px;
+    }
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    p {
+        line-height: 1.6;
+    }
+</style>
+
+<div class="container">
+    <h2>Добавить категорию</h2>
+    <form method="post">{% csrf_token %}
+        <div>
+            <label class="col-form-label mt-4" for="CategoryName">Введите название категории.</label>
+            <input type="text" class="form-control" placeholder="Название категории." id="CategoryName">
+        </div>
+        <br>
+        <button type="submit" class="btn btn-outline-success">Добавить</button>
+    </form>
+</div>
+
+{% endblock %}

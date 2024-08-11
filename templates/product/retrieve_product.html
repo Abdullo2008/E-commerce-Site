@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<br><br>
+<style>
+    .container {
+        padding: 20px;
+        margin: 0 auto;
+        max-width: 1000px;
+    }
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    p {
+        line-height: 1.6;
+    }
+</style>
+
+<div class="container">
+    {% for product in products %}
+    <div class="row">
+        <!-- Product Image on the left -->
+        <div class="col-md-4 mb-3">
+            <div class="card text-white bg-dark">
+                <img src="{{ product.image.url }}" class="card-img-top" height="300px" width="500px" alt="{{ product.name }}">
+            </div>
+        </div>
+        <!-- Product Details and Form on the right -->
+        <div class="col-md-8 mb-3">
+            <div class="card text-white bg-dark">
+                <div class="card-body">
+                    <h3>Имя: {{ product.name }}</h3>
+                    <p>Описание: {{ product.description }}</p>
+                    <p>Количество: {{ product.quantity }}</p>
+                    <p>Категория: {{ product.category }}</p>
+                    <p>Цена: {{ product.price }}$</p>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <a href="index">
+                            <button type="button" class="btn btn-outline-warning">ОБНОВИТЬ</button>
+                        </a>
+                        <a href="{% url 'index' %}">
+                            <button type="button" class="btn btn-outline-danger">УДАЛИТЬ</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+</div>
+
+{% endblock %}

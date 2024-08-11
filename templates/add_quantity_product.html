@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Добавление количества для товара {{ product.name }}</h2>
+    <div class="row">
+        <!-- Product Image on the left -->
+        <div class="col-md-4 mb-3">
+            <div class="card text-white bg-dark">
+                <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+            </div>
+        </div>
+        <!-- Product Details and Form on the right -->
+        <div class="col-md-8 mb-3">
+            <div class="card text-white bg-dark">
+                <div class="card-body">
+                    <h3>Имя: {{ product.name }}</h3>
+                    <p>Описание: {{ product.description }}</p>
+                    <p>Количество: {{ product.quantity }}</p>
+                    <p>Категория: {{ product.category }}</p>
+                    <p>Цена: {{ product.price }}$</p>
+                    <form method="post">{% csrf_token %}
+                        <div>
+                            <label class="col-form-label mt-4" for="amount_added">Введите количество для добавления</label>
+                            <input type="number" class="form-control" name="amount_added" placeholder="Количество для добавления"
+                                   id="amount_added">
+                            <input type="hidden" name="product_name" value="{{ product.name }}">
+                        </div>
+                        <button type="submit" class="btn btn-outline-success mt-3">ДОБАВИТЬ</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
