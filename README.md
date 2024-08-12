@@ -4,7 +4,7 @@ This basic site used for sellers in any store. The website provides users to cre
 # How to launch and run
 ### Create virtualenv (in terminal):
 ```pip install pipenv ``` 
-```pipenv shell``
+```pipenv shell```
 ### Configure database
 ```python manage.py makemigrations ```
 ```python manage.py migrate``` 
