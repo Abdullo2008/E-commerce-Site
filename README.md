@@ -1,6 +1,11 @@
-Creating virtualenv (in terminal):
+# Create virtualenv (in terminal):
 pip install pipenv
-then 
 pipenv shell
-then
+# Configure database
+python manage.py makemigrations
+python manage.py migrate
+# Install required packages
 pipenv install django
+pipenv install Pillow
+# Create superuser
+python manage.py createsuperuser
