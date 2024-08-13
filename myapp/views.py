@@ -78,34 +78,34 @@ def add_view(request, id):
     return render(request, 'add_quantity_product.html', context)
 
 
-# class AddProduct(CreateView):
-#     model = ProductModel
-#     template_name = 'product/add_product.html'
-#     form_class = ProductForm
-#     success_url = reverse_lazy('retrieve_product')
+class AddProduct(CreateView):
+    model = ProductModel
+    template_name = 'product/add_product.html'
+    form_class = ProductForm
+    success_url = reverse_lazy('retrieve_product')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['categorys'] = Category.objects.all()
+        return context
+
+
+# def AddProduct(request):
+#     if request.method == "POST":
+#         form = ProductForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             form.save()
+#             messages.success(request, 'Product added successfully!')
+#             return redirect(reverse_lazy('retrieve_product'))
+#     else:
+#         form = ProductForm()
 #
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context['categorys'] = Category.objects.all()
-#         return context
-
-
-def AddProduct(request):
-    if request.method == "POST":
-        form = ProductForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Product added successfully!')
-            return redirect(reverse_lazy('retrieve_product'))
-    else:
-        form = ProductForm()
-
-    context = {
-        'form': form,
-        'categorys': Category.objects.all(),
-    }
-
-    return render(request, 'product/add_product.html', context)
+#     context = {
+#         'form': form,
+#         'categorys': Category.objects.all(),
+#     }
+#
+#     return render(request, 'product/add_product.html', context)
 
 
 def RetrieveProduct(request):
@@ -116,68 +116,68 @@ def RetrieveProduct(request):
     return render(request, 'product/retrieve_product.html', context)
 
 
-# class UpdateProduct(UpdateView):
-#     model = ProductModel
-#     template_name = 'product/update_product.html'
-#     form_class = ProductForm
-#     success_url = reverse_lazy('retrieve_product')
+class UpdateProduct(UpdateView):
+    model = ProductModel
+    template_name = 'product/update_product.html'
+    form_class = ProductForm
+    success_url = reverse_lazy('retrieve_product')
 
 
-def UpdateProduct(request, pk):
-    product = get_object_or_404(ProductModel, pk=pk)
-
-    if request.method == "POST":
-        form = ProductForm(request.POST, request.FILES, instance=product)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Product updated successfully!')
-            return redirect(reverse_lazy('retrieve_product'))
-    else:
-        form = ProductForm(instance=product)
-
-    context = {
-        'form': form,
-        'categorys': Category.objects.all(),
-    }
-
-    return render(request, 'product/update_product.html', context)
-
-
-# class DeleteProduct(DeleteView):
-#     model = ProductModel
-#     template_name = 'product/delete_product.html'
-#     success_url = reverse_lazy('retrieve_product')
+# def UpdateProduct(request, pk):
+#     product = get_object_or_404(ProductModel, pk=pk)
+#
+#     if request.method == "POST":
+#         form = ProductForm(request.POST, request.FILES, instance=product)
+#         if form.is_valid():
+#             form.save()
+#             messages.success(request, 'Product updated successfully!')
+#             return redirect(reverse_lazy('retrieve_product'))
+#     else:
+#         form = ProductForm(instance=product)
+#
+#     context = {
+#         'form': form,
+#         'categorys': Category.objects.all(),
+#     }
+#
+#     return render(request, 'product/update_product.html', context)
 
 
-def DeleteProduct(request, pk):
-    product = get_object_or_404(ProductModel, pk=pk)
-
-    if request.method == "POST":
-        product.delete()
-        messages.success(request, 'Product deleted successfully!')
-        return redirect(reverse_lazy('retrieve_product'))
-
-    return render(request, 'product/delete_product.html', {'product': product})
+class DeleteProduct(DeleteView):
+    model = ProductModel
+    template_name = 'product/delete_product.html'
+    success_url = reverse_lazy('retrieve_product')
 
 
-# class AddCategory(CreateView):
-#     model = Category
-#     template_name = 'category/add_category.html'
-#     form_class = CategoryForm
-#     success_url = reverse_lazy("retrieve_category")
+# def DeleteProduct(request, pk):
+#     product = get_object_or_404(ProductModel, pk=pk)
+#
+#     if request.method == "POST":
+#         product.delete()
+#         messages.success(request, 'Product deleted successfully!')
+#         return redirect(reverse_lazy('retrieve_product'))
+#
+#     return render(request, 'product/delete_product.html', {'product': product})
 
 
-def AddCategory(request):
-    if request.method == "POST":
-        form = CategoryForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Category added successfully!')
-            return redirect(reverse_lazy('retrieve_category'))
-    else:
-        form = CategoryForm()
+class AddCategory(CreateView):
+    model = Category
+    template_name = 'category/add_category.html'
+    form_class = CategoryForm
+    success_url = reverse_lazy("retrieve_category")
 
-    return render(request, 'category/add_category.html', {'form': form})
+
+# def AddCategory(request):
+#     if request.method == "POST":
+#         form = CategoryForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             messages.success(request, 'Category added successfully!')
+#             return redirect(reverse_lazy('retrieve_category'))
+#     else:
+#         form = CategoryForm()
+#
+#     return render(request, 'category/add_category.html', {'form': form})
 
 
 def RetrieveCategory(request):
@@ -188,38 +188,38 @@ def RetrieveCategory(request):
     return render(request, 'category/retrieve_category.html', context)
 
 
-# class UpdateCategory(UpdateView):
-#     model = Category
-#     template_name = 'category/update_category.html'
-#     form_class = CategoryForm
-#     success_url = reverse_lazy('retrieve_category')
+class UpdateCategory(UpdateView):
+    model = Category
+    template_name = 'category/update_category.html'
+    form_class = CategoryForm
+    success_url = reverse_lazy('retrieve_category')
 
 
-def UpdateCategory(request, pk):
-    up_category = get_object_or_404(Category, pk=pk)
-
-    if request.method == "POST":
-        form = CategoryForm(request.POST, instance=up_category)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Category updated successfully!')
-            return redirect(reverse_lazy('retrieve_category'))
-    else:
-        form = CategoryForm(instance=category)
-    return render(request, 'category/update_category.html', {'form': form})
-
-
-# class DeleteCategory(DeleteView):
-#     model = Category
-#     template_name = 'category/delete_category.html'
-#     success_url = reverse_lazy('retrieve_category')
+# def UpdateCategory(request, pk):
+#     up_category = get_object_or_404(Category, pk=pk)
+#
+#     if request.method == "POST":
+#         form = CategoryForm(request.POST, instance=up_category)
+#         if form.is_valid():
+#             form.save()
+#             messages.success(request, 'Category updated successfully!')
+#             return redirect(reverse_lazy('retrieve_category'))
+#     else:
+#         form = CategoryForm(instance=category)
+#     return render(request, 'category/update_category.html', {'form': form})
 
 
-def DeleteCategory(request, pk):
-    del_category = get_object_or_404(Category, pk=pk)
-    if request.method == "POST":
-        del_category.delete()
-        messages.success(request, 'Category deleted successfully!')
-        return redirect(reverse_lazy('retrieve_category'))
+class DeleteCategory(DeleteView):
+    model = Category
+    template_name = 'category/delete_category.html'
+    success_url = reverse_lazy('retrieve_category')
 
-    return render(request, 'category/delete_category.html', {'category': category})
+
+# def DeleteCategory(request, pk):
+#     del_category = get_object_or_404(Category, pk=pk)
+#     if request.method == "POST":
+#         del_category.delete()
+#         messages.success(request, 'Category deleted successfully!')
+#         return redirect(reverse_lazy('retrieve_category'))
+#
+#     return render(request, 'category/delete_category.html', {'category': category})
