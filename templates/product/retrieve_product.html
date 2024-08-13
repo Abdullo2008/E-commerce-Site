@@ -36,10 +36,10 @@
                     <p>Категория: {{ product.category }}</p>
                     <p>Цена: {{ product.price }}$</p>
                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <a href="index">
+                        <a href="{% url 'update_product' product.id %}">
                             <button type="button" class="btn btn-outline-warning">ОБНОВИТЬ</button>
                         </a>
-                        <a href="{% url 'index' %}">
+                        <a href="{% url 'delete_product' product.id %}">
                             <button type="button" class="btn btn-outline-danger">УДАЛИТЬ</button>
                         </a>
                     </div>

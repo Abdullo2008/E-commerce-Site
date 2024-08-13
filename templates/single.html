@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="container mt-4">
+    {% if products %}
     <h2 class="text-center mb-4">Все товары в текущей категории</h2>
     {% for product in products %}
     <div class="row">
@@ -32,5 +33,10 @@
         </div>
     </div>
     {% endfor %}
+    {% else %}
+    <center>
+        <h1>В этой категории нет товаров.</h1>
+    </center>
+    {% endif %}
 </div>
 {% endblock %}

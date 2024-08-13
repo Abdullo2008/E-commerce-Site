@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-{% load form_filters %}
+
 <br><br>
 <style>
     .container {
@@ -20,13 +20,12 @@
 <div class="container">
     <h2>Обновить категорию</h2>
     <form method="post">{% csrf_token %}
-
-        <div>
-            <label class="col-form-label mt-4" for="CategoryName">Обновить название категории.</label>
-            <input type="text" class="form-control" placeholder="Название категории." id="CategoryName">
-        </div>
+        {{ form.as_p }}
         <br>
-        <button type="submit" class="btn btn-outline-success">Добавить</button>
+        <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-outline-success">Сохранить изменения</button>
+            <a href="{% url 'retrieve_product' %}" class="btn btn-outline-danger">Отменить</a>
+        </div>
     </form>
 </div>
 

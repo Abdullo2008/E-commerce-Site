@@ -84,6 +84,11 @@ class AddProduct(CreateView):
     form_class = ProductForm
     success_url = reverse_lazy('retrieve_product')
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['categorys'] = Category.objects.all()
+        return context
+
 def RetrieveProduct(request):
     products = ProductModel.objects.all()
     context = {

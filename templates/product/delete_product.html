@@ -2,11 +2,29 @@
 {% block content %}
 
 <br><br>
-<center>
-<form method="post">{% csrf_token %}
-    <h2>Подтвердите удаление продукта!!!</h2>
-    <button type="submit" class="btn btn-outline-danger">Подтвердить</button>
-</form>
-</center>
+<style>
+    .container {
+        padding: 20px;
+        margin: 0 auto;
+        max-width: 800px;
+    }
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    p {
+        line-height: 1.6;
+    }
+</style>
+
+<div class="container">
+    <form method="post">{% csrf_token %}
+        <h2>Подтвердите удаление продукта!!!</h2>
+        <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-outline-danger">Подтвердить</button>
+            <a href="{% url 'retrieve_product' %}" class="btn btn-outline-warning">Отменить</a>
+        </div>
+    </form>
+</div>
 
 {% endblock %}

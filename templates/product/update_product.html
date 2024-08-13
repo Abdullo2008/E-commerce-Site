@@ -17,11 +17,14 @@
 </style>
 
 <div class="container">
-<h2>Обновить продукт</h2>
-<form method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-outline-success">Добавить</button>
-</form>
+    <h2>Обновить продукт</h2>
+    <form method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-outline-success">Сохранить изменения</button>
+            <a href="{% url 'retrieve_product' %}" class="btn btn-outline-danger">Отменить</a>
+        </div>
+    </form>
 </div>
 
 {% endblock %}
