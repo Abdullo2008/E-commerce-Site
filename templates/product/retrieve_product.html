@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
-
-<br><br>
+{% if products %}
+<br><h2>Все продукты</h2><br>
 <style>
     .container {
         padding: 20px;
@@ -18,16 +18,14 @@
 </style>
 
 <div class="container">
-    <h2>Все продукты</h2>
     {% for product in products %}
     <div class="row">
-        <!-- Product Image on the left -->
         <div class="col-md-4 mb-3">
             <div class="card text-white bg-dark">
-                <img src="{{ product.image.url }}" class="card-img-top" height="300px" width="500px" alt="{{ product.name }}">
+                <img src="{{ product.image.url }}" class="card-img-top" height="300px" width="500px"
+                     alt="{{ product.name }}">
             </div>
         </div>
-        <!-- Product Details and Form on the right -->
         <div class="col-md-8 mb-3">
             <div class="card text-white bg-dark">
                 <div class="card-body">
@@ -48,8 +46,10 @@
             </div>
         </div>
     </div>
-
     {% endfor %}
+    {% else %}
+    <center><h2>Нет продуктов</h2></center>
+    {% endif %}
 </div>
 
 {% endblock %}

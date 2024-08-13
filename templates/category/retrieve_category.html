@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
-
-<br><br>
+{% if categorys %}
+<br><h2>Все категории</h2><br>
 <style>
     .container {
         padding: 20px;
@@ -18,7 +18,6 @@
 </style>
 
 <div class="container">
-    <h2>Все категории</h2>
     {% for category in categorys %}
     <h2>{{ category.name }}</h2>
     <div class="col-md-15 mb-3">
@@ -37,6 +36,8 @@
         </a>
     </div>
     {% endfor %}
+    {% else %}
+    <center><h2>Нет категорий</h2></center>
+    {% endif %}
 </div>
-
 {% endblock %}
