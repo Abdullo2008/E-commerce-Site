@@ -19,36 +19,7 @@
 <div class="container">
     <h2>Добавить продукт</h2>
     <form method="post" enctype="multipart/form-data">{% csrf_token %}
-        <div>
-            <label class="col-form-label mt-4" for="ProductName">Введите название продукта.</label>
-            <input type="text" class="form-control" name="name" placeholder="Введите название продукта."
-                   id="ProductName">
-        </div>
-        <div>
-            <label for="ProductDescription" class="form-label mt-4">Описание</label>
-            <textarea class="form-control" id="ProductDescription" rows="3">память:
-цвет:</textarea>
-        </div>
-        <div>
-            <label for="ProductImage" class="form-label mt-4">Изображение Продукта.</label>
-            <input class="form-control" type="file" id="ProductImage">
-        </div>
-        <div>
-            <label class="col-form-label mt-4" for="ProductQuantity">Введите количество продукта.</label>
-            <input type="number" class="form-control" placeholder="Количество продукта." id="ProductQuantity">
-        </div>
-        <div>
-            <label class="col-form-label mt-4" for="ProductPrice">Введите цену продукта.</label>
-            <input type="number" class="form-control" placeholder="Цена продукта." id="ProductPrice">
-        </div>
-        <div>
-            <label for="exampleSelect1" class="form-label mt-4">Выберите категорию.</label>
-            <select class="form-select" id="exampleSelect1">
-                {% for category in categorys %}
-                <option>{{ category.name }}</option>
-                {% endfor %}
-            </select>
-        </div>
+        {{ form.as_p }}
         <br>
         <button type="submit" class="btn btn-outline-success">Добавить</button>
     </form>

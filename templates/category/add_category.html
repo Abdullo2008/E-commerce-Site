@@ -19,10 +19,7 @@
 <div class="container">
     <h2>Добавить категорию</h2>
     <form method="post">{% csrf_token %}
-        <div>
-            <label class="col-form-label mt-4" for="CategoryName">Введите название категории.</label>
-            <input type="text" class="form-control" placeholder="Название категории." id="CategoryName">
-        </div>
+        {{ form.as_p }}
         <br>
         <button type="submit" class="btn btn-outline-success">Добавить</button>
     </form>

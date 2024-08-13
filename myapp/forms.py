@@ -40,6 +40,6 @@ class ProductForm(forms.ModelForm):
             'description': 'Описание',
             'image': 'Изображение',
             'quantity': 'Количество',
-            'price': 'Цена',
+            'price': 'Цена($)',
             'category': 'Категория',
         }
