@@ -1,16 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
 {% if messages %}
-    <div class="container mt-4">
-        {% for message in messages %}
-            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-                {{ message }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        {% endfor %}
+<div class="container mt-4">
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
+    {% endfor %}
+</div>
 {% endif %}
 <div class="container mt-4">
+    {% if categorys %}
     <h2>Категории</h2>
     {% for category in categorys %}
     <div class="col-md-4 mb-3">
@@ -22,6 +23,9 @@
         </a>
     </div>
     {% endfor %}
+    {% else %}
+    <h2>Категория не существует. При необходимости <a href="{% url 'add_category' %}">добавьте один</a>.</h2>
+    {% endif %}
 </div>
 
 {% endblock %}
