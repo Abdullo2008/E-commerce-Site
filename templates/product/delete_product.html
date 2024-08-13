@@ -20,9 +20,11 @@
 <div class="container">
     <form method="post">{% csrf_token %}
         <h2>Подтвердите удаление продукта!!!</h2>
-        <div class="d-flex justify-content-between">
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <a href="{% url 'retrieve_product' %}">
+                <button type="button" class="btn btn-outline-warning">Отменить</button>
+            </a>
             <button type="submit" class="btn btn-outline-danger">Подтвердить</button>
-            <a href="{% url 'retrieve_product' %}" class="btn btn-outline-warning">Отменить</a>
         </div>
     </form>
 </div>
